@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Informações do Alvo{% endblock %}
+
+{% block content %}
+<div class="header">
+    <img alt="Polícia Civil logo" src="{{ url_for('static', filename='img/logo.png') }}"/>
+
+    <div>
+        <h1>RONDÔNIA</h1>
+        <h2>POLÍCIA CIVIL</h2>
+    </div>
+</div>
+<div class="title">
+    <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+    Informações do Alvo
+</div>
+<div class="buttons">
+    <a href="/fotos" class="button">
+        <i class="fas fa-camera"></i>
+        <span>Fotos</span>
+    </a>
+    <a href="/mapa" class="button">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Mapa</span>
+    </a>
+    <a href="/qualificacao" class="button">
+        <i class="fas fa-id-card"></i>
+        <span>Qualificação</span>
+    </a>
+    <a href="/endereco" class="button">
+        <i class="fas fa-map-signs"></i>
+        <span>Endereço</span>
+    </a>
+    <a href="/informacao" class="button">
+        <i class="fas fa-info-circle"></i>
+        <span>Informações</span>
+    </a>
+</div>
+{% endblock %}

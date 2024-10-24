@@ -1,0 +1,116 @@
+<html>
+ <head>
+  <title>
+   Informações do Alvo
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            background: linear-gradient(to bottom, #0000ff, #8a2be2);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4b0082;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header img {
+            width: 80px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header h1 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+        .title {
+            background-color: #8b4513;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .title .home-icon {
+            position: absolute;
+            left: 10px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        .subtitle {
+            color: red;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .photos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .photo-box {
+            width: 240px; /* Increased by 20% */
+            height: 288px; /* Increased by 20% */
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .footer {
+            background-color: #4b0082;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+  </style>
+ </head>
+ <body>
+    <div class="header">
+        <img alt="Polícia Civil logo" src="{{ url_for('static', filename='img/logo.png') }}"/>
+        <div>
+            <h1>RONDÔNIA</h1>
+            <h2>POLÍCIA CIVIL</h2>
+        </div>
+    </div>
+    <div class="title">
+        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+        Fotos do Alvo
+    </div>
+
+  <div class="photos">
+   <div class="photo-box">
+    <img alt="Foto do alvo 1" src="https://storage.googleapis.com/a1aa/image/DXHkVQ9WPD6WAlHUln5qexPmGReTNUeYRmQobkClFl4i7ZGnA.jpg"/>
+   </div>
+   <div class="photo-box">
+    <img alt="Foto do alvo 2" src="https://storage.googleapis.com/a1aa/image/PMncrci6u0qHCtMB0eQt5BaT2MieIYReiOphQDpOhjah7ZGnA.jpg"/>
+   </div>
+  </div>
+  <div class="footer">
+    &copy; 2024 Polícia Civil de Rondônia
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+ </body>
+</html>

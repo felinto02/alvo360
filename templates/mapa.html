@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informações do Alvo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0000ff, #8a2be2);
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .header {
+            background-color: #4b0082;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header img {
+            width: 80px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header h1, .header h2 {
+            margin: 0;
+        }
+        .header h1 {
+            font-size: 18px;
+        }
+        .header h2 {
+            font-size: 14px;
+        }
+        .title {
+            background-color: #8b4513;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .title .home-icon {
+            position: absolute;
+            left: 10px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        #map {
+            flex-grow: 1;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        // Função para inicializar o mapa e marcador
+        function initMap() {
+            var targetLocation = { lat: -34.397, lng: 150.644 }; // Coordenadas iniciais para o marcador
+
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 8, center: targetLocation });
+
+            var marker = new google.maps.Marker({ position: targetLocation, map: map });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    // Ajuste o centro do mapa para a posição atual
+                    map.setCenter(pos);
+                }, function() {
+                    handleLocationError(true, map.getCenter());
+                });
+            } else {
+                handleLocationError(false, map.getCenter());
+            }
+        }
+
+        // Função para lidar com erros de geolocalização
+        function handleLocationError(browserHasGeolocation, pos) {
+            var infoWindow = new google.maps.InfoWindow({ map: map });
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+        }
+
+        // Evento para abrir o Google Maps com a localização do usuário e destino do banco de dados
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('map').addEventListener('click', function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+
+                        // Coordenadas de destino vindas do servidor
+                        var destinationLat = "{{ dados.endereco_lat }}"; // Substituir com os dados do banco
+                        var destinationLng = "{{ dados.endereco_lng }}"; // Substituir com os dados do banco
+
+                        var url = `https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${destinationLat},${destinationLng}&travelmode=driving`;
+                        window.open(url, '_blank');
+                    });
+                } else {
+                    alert("Geolocation is not supported by this browser.");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <img alt="Polícia Civil logo" src="{{ url_for('static', filename='img/logo.png') }}"/>
+        <div>
+            <h1>RONDÔNIA</h1>
+            <h2>POLÍCIA CIVIL</h2>
+        </div>
+    </div>
+    <div class="title">
+        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+        Mapa da Casa do Alvo
+    </div>
+    <div id="map"></div>
+</body>
+</html>

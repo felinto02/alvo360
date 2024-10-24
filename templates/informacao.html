@@ -1,0 +1,94 @@
+<html>
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #0000ff, #8a2be2);
+        font-family: Arial, sans-serif;
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+    .header {
+        background-color: #4b0082;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .header img {
+        width: 80px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    
+    .header h1, .header h2 {
+        margin: 0;
+    }
+    .header h1 {
+        font-size: 18px;
+    }
+    .header h2 {
+        font-size: 14px;
+    }
+    .title {
+        background-color: #8b4513;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .title .home-icon {
+        position: absolute;
+        left: 10px;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+    }
+ 
+    .info-box {
+        flex-grow: 1;
+        margin: 10px;
+        padding: 20px;
+        background-color: white;
+        color: black;
+        border-radius: 10px;
+        overflow-y: auto;
+    }
+    .footer {
+        background-color: #4b0082;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+</style>
+
+<div class="header">
+    <img alt="Polícia Civil logo" src="{{ url_for('static', filename='img/logo.png') }}"/>
+    <div>
+        <h1>RONDÔNIA</h1>
+        <h2>POLÍCIA CIVIL</h2>
+    </div>
+</div>
+<div class="title">
+    <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+    <p>Informações do Alvo</p>
+    
+</div>
+    <div class="info-box">
+        <h2>Detalhes do Alvo</h2>
+        <!-- Informações do alvo virão do banco de dados -->
+    </div>
+    <div class="footer">
+        &copy; 2024 Polícia Civil de Rondônia
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    
+</html>
