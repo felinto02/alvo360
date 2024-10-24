@@ -60,11 +60,13 @@ body {
 }
 
 .footer {
-    background-color: #6A5ACD;
-    padding: 10px;
-    position: fixed;
+    background-color: #025294;
+    position: fixed;  /* Ou relative para teste */
     bottom: 0;
     width: 100%;
     color: white;
     font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;  /* Aumenta para garantir que fique acima */
 }

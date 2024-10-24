@@ -1,158 +1,167 @@
 <html>
- <head>
-  <title>
-   Informações do Alvo
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-   body {
-            background: linear-gradient(to bottom, #0000ff, #8a2be2);
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #4b0082;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .header img {
-            width: 80px;
-            height: 50px;
-            margin-right: 10px;
-        }
+  <head>
+    <title>Informações do Alvo</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to bottom, #0000ff, #8a2be2);
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #4b0082;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .header img {
+        width: 80px;
+        height: 50px;
+        margin-right: 10px;
+      }
 
-        
-        .header h1, .header h2 {
-            margin: 0;
-        }
-        .header h1 {
-            font-size: 18px;
-        }
-        .header h2 {
-            font-size: 14px;
-        }
-        .title {
-            background-color: #8b4513;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .title .home-icon {
-            position: absolute;
-            left: 10px;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            padding: 20px;
-            text-align: left;
-        }
-        .info-grid div {
-            background-color: white;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .info-grid .full-width {
-            grid-column: span 3;
-        }
-        .info-grid .label {
-            font-weight: bold;
-        }
-        .info-grid .col-span-3 {
-            grid-column: span 3;
-        }
-        .info-grid .col-span-2 {
-            grid-column: span 2;
-        }
-        .info-grid .observacao {
-            height: 100px; /* Decreased by 50% from the original 200px */
-        }
-        .footer {
-            background-color: #4b0082;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-        }
-  </style>
- </head>
- <body>
+      .header h1,
+      .header h2 {
+        margin: 0;
+      }
+      .header h1 {
+        font-size: 18px;
+      }
+      .header h2 {
+        font-size: 14px;
+      }
+      .title {
+        background-color: #8b4513;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .title .home-icon {
+        position: absolute;
+        left: 10px;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        padding: 20px;
+        text-align: left;
+      }
+      .info-grid div {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .info-grid .full-width {
+        grid-column: span 3;
+      }
+      .info-grid .label {
+        font-weight: bold;
+      }
+      .info-grid .col-span-3 {
+        grid-column: span 3;
+      }
+      .info-grid .col-span-2 {
+        grid-column: span 2;
+      }
+      .info-grid .observacao {
+        height: 100px; /* Decreased by 50% from the original 200px */
+      }
+      .footer {
+        background-color: #025294;
+        position: fixed; /* Ou relative para teste */
+        bottom: 0;
+        width: 100%;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+        padding: 10px 0;
+        z-index: 1000; /* Aumenta para garantir que fique acima */
+      }
+    </style>
+  </head>
+  <body>
     <div class="header">
-        <img alt="Polícia Civil logo" src="{{ url_for('static', filename='img/logo.png') }}"/>
-        <div>
-            <h1>RONDÔNIA</h1>
-            <h2>POLÍCIA CIVIL</h2>
-        </div>
+      <img
+        alt="Polícia Civil logo"
+        src="{{ url_for('static', filename='img/logo.png') }}"
+      />
+      <div>
+        <h1>RONDÔNIA</h1>
+        <h2>POLÍCIA CIVIL</h2>
+      </div>
     </div>
     <div class="title">
-        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
-        Qualificação do Alvo
+      <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+      Qualificação do Alvo
     </div>
- 
+
     <div class="info-grid">
-        <div class="col-span-3">
-           <span class="label">Nome:</span> 
-           <span id="nome">{{ dados['cliente']['nome'] }}</span>
-        </div>
-        <div class="col-span-3">
-           <span class="label">Mãe:</span> 
-           <span id="nome-pai">{{ dados['cliente']['nome_mae'] }}</span>
-        </div>
-        <div class="col-span-3">
-           <span class="label">Pai:</span> 
-           <span id="nome-mae">{{ dados['cliente']['nome_pai'] }}</span>
-        </div>
-        <div>
-           <span class="label">D.T. Nasc.:</span> 
-           <span id="data-nascimento">{{ dados['cliente']['data_nasc'] }}</span>
-        </div>
-        <div>
-           <span class="label">Natural:</span> 
-           <span id="natural">{{ dados['cliente']['nat'] }}</span>
-        </div>
-        <div>
-           <span class="label">UF:</span> 
-           <span id="uf">{{ dados['cliente']['nat_uf'] }}</span>
-        </div>
-        <div class="col-span-2">
-           <span class="label">CPF:</span> 
-           <span id="cpf">{{ dados['cliente']['cpf'] }}</span>
-        </div>
-        <div>
-           <span class="label">RG:</span> 
-           <span id="rg">{{ dados['cliente']['rg'] }}</span>
-        </div>
-        <div>
-           <span class="label">Telefone 1:</span> 
-           <span id="telefone-1">{{ dados['cliente']['telefone'] }}</span>
-        </div>
-        <div>
-           <span class="label">Telefone 2:</span> 
-           <span id="telefone-2">{{ dados['cliente']['telefone_secundário'] }}</span>
-        </div>
-        <div class="full-width observacao">
-           <span class="label">Observação:</span> 
-           <span id="observacao">{{ dados['cliente']['observacao'] }}</span>
-        </div>
-     </div>
-     
-  <div class="footer">
-    &copy; 2024 Polícia Civil de Rondônia
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
- </body>
+      <div class="col-span-3">
+        <span class="label">Nome:</span>
+        <span id="nome">{{ dados['cliente']['nome'] }}</span>
+      </div>
+      <div class="col-span-3">
+        <span class="label">Mãe:</span>
+        <span id="nome-pai">{{ dados['cliente']['nome_mae'] }}</span>
+      </div>
+      <div class="col-span-3">
+        <span class="label">Pai:</span>
+        <span id="nome-mae">{{ dados['cliente']['nome_pai'] }}</span>
+      </div>
+      <div>
+        <span class="label">D.T. Nasc.:</span>
+        <span id="data-nascimento">{{ dados['cliente']['data_nasc'] }}</span>
+      </div>
+      <div>
+        <span class="label">Natural:</span>
+        <span id="natural">{{ dados['cliente']['nat'] }}</span>
+      </div>
+      <div>
+        <span class="label">UF:</span>
+        <span id="uf">{{ dados['cliente']['nat_uf'] }}</span>
+      </div>
+      <div class="col-span-2">
+        <span class="label">CPF:</span>
+        <span id="cpf">{{ dados['cliente']['cpf'] }}</span>
+      </div>
+      <div>
+        <span class="label">RG:</span>
+        <span id="rg">{{ dados['cliente']['rg'] }}</span>
+      </div>
+      <div>
+        <span class="label">Telefone 1:</span>
+        <span id="telefone-1">{{ dados['cliente']['telefone'] }}</span>
+      </div>
+      <div>
+        <span class="label">Telefone 2:</span>
+        <span id="telefone-2"
+          >{{ dados['cliente']['telefone_secundário'] }}</span
+        >
+      </div>
+      <div class="full-width observacao">
+        <span class="label">Observação:</span>
+        <span id="observacao">{{ dados['cliente']['observacao'] }}</span>
+      </div>
+    </div>
+
+    <div class="footer">&copy; 2024 Polícia Civil de Rondônia</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  </body>
 </html>

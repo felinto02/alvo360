@@ -1,134 +1,151 @@
-
-
 {% block head %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <style>
-        .header {
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-        }
-        .header img {
-            width: 80px;
-            height: 50px;
-            margin-right: 10px;
-        }
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  rel="stylesheet"
+/>
+<style>
 
-        .header h1, .header h2 {
-            margin: 0;
-        }
+body {
+    background: linear-gradient(to right, #ffffff, #535353); /* Gradiente do vermelho ao amarelo */
+}
 
-        .header h1 {
-            font-size: 18px;
-        }
+  .header {
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+  }
+  .header img {
+    width: 270px;
+    height: 180px;
+  }
 
-        .header h2 {
-            font-size: 14px;
-        }
+  .header h1,
+  .header h2 {
+    margin: 0;
+    margin-left: -50;
+  }
 
-        .title {
-            background-color: #6A5ACD;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: white;
-            height: 10px;
-        }
-        .title .home-icon {
-            position: absolute;
-            left: 10px;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-        }
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            flex-grow: 1;
-        }
-        .button {
-            background-color: #4b0082;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 100px;
-            height: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-        }
-        .button i {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .button:hover {
-            transform: translateY(-10px);
-        }
-        .footer {
-            background-color: #6A5ACD;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            color: white;
-            font-size: 14px;
-        }
-    </style>
-{% endblock %}
+  .header h1 {
+    font-size: 60px;
+    text-align: center;
+  }
 
-{% block content %}
-    <div class="header">
-        <img alt="Polícia Civil logo" src="{{ url_for('static', filename='img/logo.png') }}"/>
-        <div>
-            <h1>RONDÔNIA</h1>
-            <h2>POLÍCIA CIVIL</h2>
-        </div>
-    </div>
+  .header h2 {
+    font-size: 50px;
+    text-align: center;
+  }
 
-    <div class="title">
-        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+  .title {
+    background-color: #025294;
+    padding: 50px;
+    margin-top: 30px;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    height: 10px;
+  }
+  .title .home-icon {
+    position: absolute;
+    left: 30px;
+    font-size: 70px;
+    color: white;
+    cursor: pointer;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+    flex-grow: 1;
+  }
+  .button {
+    background-color: #022ca0;
+    color: white;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    font-size: 60px;
+  }
+  .button i {
+    font-size: 200px;
+    margin-bottom: 10px;
+  }
+  .button:hover {
+    transform: translateY(-10px);
+  }
 
-    </div>
 
-    <div class="buttons">
-        <a href="/fotos" class="button">
-            <i class="fas fa-camera"></i>
-            <span>Fotos</span>
-        </a>
-        <a href="/mapa" class="button">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Mapa</span>
-        </a>
-        <a href="/qualificacao" class="button">
-            <i class="fas fa-id-card"></i>
-            <span>Qualificação</span>
-        </a>
-        <a href="/endereco" class="button">
-            <i class="fas fa-map-signs"></i>
-            <span>Endereço</span>
-        </a>
-        <a href="/informacao" class="button">
-            <i class="fas fa-info-circle"></i>
-            <span>Informações</span>
-        </a>
-    </div>
 
-    <div class="footer">
-        &copy; 2024 Polícia Civil de Rondônia
-    </div>
+  .footer {
+    background-color: #025294; /* Cor de fundo */
+    position: fixed;  /* Mantendo como fixo se desejado */
+    bottom: 0;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;  /* Alto o suficiente para sobrepor outros elementos */
+    font-size: 30px; /* Tamanho da fonte */
+}
+
+</style>
+{% endblock %} {% block content %}
+<div class="header">
+  <img
+    alt="Polícia Civil logo"
+    src="{{ url_for('static', filename='img/logo.png') }}"
+  />
+  <div>
+    <h1>RONDÔNIA</h1>
+    <h2>POLÍCIA CIVIL</h2>
+  </div>
+</div>
+
+<div class="title">
+  <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+</div>
+
+<div class="buttons">
+  <a href="/fotos" class="button">
+    <i class="fas fa-camera"></i>
+    <span>Fotos</span>
+  </a>
+  <a href="/mapa" class="button">
+    <i class="fas fa-map-marker-alt"></i>
+    <span>Mapa</span>
+  </a>
+  <a href="/qualificacao" class="button">
+    <i class="fas fa-id-card"></i>
+    <span>Qualificação</span>
+  </a>
+  <a href="/endereco" class="button">
+    <i class="fas fa-map-signs"></i>
+    <span>Endereço</span>
+  </a>
+  <a href="/informacao" class="button">
+    <i class="fas fa-info-circle"></i>
+    <span>Informações</span>
+  </a>
+</div>
+
+<div class="footer">&copy; 2024 Polícia Civil de Rondônia</div>
 {% endblock %}
