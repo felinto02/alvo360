@@ -1,4 +1,3 @@
-from flask import flash
 import mysql.connector
 from mysql.connector import Error
 import base64
@@ -58,11 +57,9 @@ def buscar_dados_cliente(cliente_id):
                 'informacoes': dados_informacoes
             }
 
-            print(dados_endereco['obs_endereco'])
             return dados_completos
 
     except Error as e:
-        flash("Erro de conexão com o servidor.", "error")  # Exibe a mensagem de erro para o usuário
         print(f"Erro ao buscar dados do cliente: {e}")
         return None
     finally:

@@ -12,17 +12,19 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 
-
 @app.route('/')
 def index():
     cliente_id = 1  # Aqui, você deve ajustar o ID do cliente que deseja buscar
     dados = buscar_dados_cliente(cliente_id)  # Busca os dados do cliente
+    
+
     
     # Verifique se os dados foram encontrados
     if dados:
         return render_template('index.html', dados=dados)  # Passa os dados para o template
     else:
         return "Cliente não encontrado", 404
+
 
 @app.route('/fotos/<int:cliente_id>')
 def fotos(cliente_id):
