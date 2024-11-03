@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Fotos{% endblock %}
+
+{% block page_title %}
+Fotos do Alvo
+{% endblock %}
+
+{% block content %}
+<style>
+    .photos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .photo-box {
+        width: 240px;
+        height: 288px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        overflow: hidden;
+        
+    }
+
+    .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="photos">
+    <div class="photo-box">
+        {% if dados and 'fotos' in dados and dados['fotos']['foto1'] %}
+            <img alt="Foto do alvo 1" src="data:image/jpeg;base64,{{ dados['fotos']['foto1'] }}" />
+        {% else %}
+            <img alt="Foto do alvo 1" src="https://via.placeholder.com/240x288?text=Imagem+Indisponível" />
+        {% endif %}
+    </div>
+    <div class="photo-box">
+        {% if dados and 'fotos' in dados and dados['fotos']['foto2'] %}
+            <img alt="Foto do alvo 2" src="data:image/jpeg;base64,{{ dados['fotos']['foto2'] }}" />
+        {% else %}
+            <img alt="Foto do alvo 2" src="https://via.placeholder.com/240x288?text=Imagem+Indisponível" />
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Informações Adicionais{% endblock %}
+
+{% block page_title %}
+Informações Adicionais
+{% endblock %}
+
+{% block content %}
+<style>
+    .info-box {
+        flex-grow: 1;
+        margin: 10px;
+        padding: 20px;
+        background-color: white;
+        color: black;
+        border-radius: 10px;
+        overflow-y: auto;
+        text-align: justify;
+        font-size: 18px;
+    }
+
+    #info_adicionais {
+        margin: 10px;
+        
+    }
+</style>
+
+<div class="info-box">
+    <span id="info_adicionais">{{ dados['informacoes']['info_adicionais'] }}</span>
+</div>
+
+{% endblock %}

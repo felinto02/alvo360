@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Informações do Alvo{% endblock %}
+
+{% block page_title %}
+Qualificação do Alvo
+{% endblock %}
+
+{% block content %}
+<style>
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        padding: 20px;
+        text-align: left;
+    }
+
+    .info-grid div {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .info-grid .full-width {
+        grid-column: span 3;
+    }
+
+    .info-grid .label {
+        font-weight: bold;
+    }
+
+    .info-grid .col-span-3 {
+        grid-column: span 3;
+    }
+
+    .info-grid .col-span-2 {
+        grid-column: span 2;
+    }
+
+    .info-grid .observacao {
+        height: 100px;
+        text-align: justify;
+    }
+</style>
+
+
+<div class="info-grid">
+    <div class="col-span-3">
+        <span class="label">Nome:</span>
+        <span id="nome">{{ dados['cliente']['nome'] }}</span>
+    </div>
+    <div class="col-span-3">
+        <span class="label">Mãe:</span>
+        <span id="nome-mae">{{ dados['cliente']['nome_mae'] }}</span>
+    </div>
+    <div class="col-span-3">
+        <span class="label">Pai:</span>
+        <span id="nome-pai">{{ dados['cliente']['nome_pai'] }}</span>
+    </div>
+    <div>
+        <span class="label">D.T. Nasc.:</span>
+        <span id="data-nascimento">{{ dados['cliente']['data_nasc'] }}</span>
+    </div>
+    <div>
+        <span class="label">Natural:</span>
+        <span id="natural">{{ dados['cliente']['nat'] }}</span>
+    </div>
+    <div>
+        <span class="label">UF:</span>
+        <span id="uf">{{ dados['cliente']['nat_uf'] }}</span>
+    </div>
+    <div class="col-span-2">
+        <span class="label">CPF:</span>
+        <span id="cpf">{{ dados['cliente']['cpf'] }}</span>
+    </div>
+    <div>
+        <span class="label">RG:</span>
+        <span id="rg">{{ dados['cliente']['rg'] }}</span>
+    </div>
+    <div>
+        <span class="label">Telefone 1:</span>
+        <span id="telefone-1">{{ dados['cliente']['telefone'] }}</span>
+    </div>
+    <div>
+        <span class="label">Telefone 2:</span>
+        <span id="telefone-2">{{ dados['cliente']['telefone_secundário'] }}</span>
+    </div>
+    <div class="full-width observacao">
+        <span class="label">Observação:</span>
+        <span id="observacao">{{ dados['cliente']['observacao'] }}</span>
+    </div>
+</div>
+
+{% endblock %}

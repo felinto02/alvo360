@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Informaçao do Alvo Padrão{% endblock %}</title>
+
+    <!-- Carregar Font Awesome apenas uma vez -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Link correto para o arquivo CSS estático -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Bloco para estilos adicionais -->
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <!-- Header com logo da Polícia Civil -->
+    <div class="header">
+        <img alt="Polícia Civil logo" src="{{ url_for('static', filename='imagens/logo.png') }}" />
+        <div>
+            <h1>RONDÔNIA</h1>
+            <h2>POLÍCIA CIVIL</h2>
+        </div>
+    </div>
+
+    <!-- Bloco para exibir mensagens de erro -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Título da página com ícone de home -->
+    <div class="title">
+        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+        {% block page_title %}Título da Página{% endblock %}
+    </div>
+
+    <!-- Conteúdo da página -->
+    {% block content %}{% endblock %}
+
+    <!-- Rodapé -->
+    <div class="footer">
+        &copy; 2024 Polícia Civil de Rondônia
+    </div>
+
+    <!-- Carregar JavaScript do Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Bloco para scripts adicionais -->
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

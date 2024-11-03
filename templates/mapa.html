@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa da Casa do Alvo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0000FF, #8A2BE2);
+            text-align: center;
+            color: white;
+        }
+        .header {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header img {
+            width: 80px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header h1, .header h2 {
+            margin: 0;
+        }
+        .header h1 {
+            font-size: 18px;
+        }
+        .header h2 {
+            font-size: 14px;
+        }
+        .title {
+            background-color: #6A5ACD;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .title .home-icon {
+            position: absolute;
+            left: 10px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        #map {
+            flex-grow: 1;
+            margin: 10px;
+            height: 400px; /* Ajuste a altura do mapa conforme necessário */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img alt="Rondônia Polícia Civil logo" src="/imagens/logo.png"/>
+        <div>
+            <h1>RONDÔNIA</h1>
+            <h2>POLÍCIA CIVIL</h2>
+        </div>
+    </div>
+    <div class="title">
+        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+        Mapa da Casa do Alvo
+    </div>
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed/v1/place?q={{ dados.endereco.link_endereco }}" allowfullscreen></iframe>
+    </div>
+</body>
+</html>
