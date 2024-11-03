@@ -1,18 +1,13 @@
-import mysql.connector
-from mysql.connector import Error
 import base64
+from conexao import create_connection, close_connection
+from mysql.connector import Error
 
 def buscar_dados_cliente(cliente_id):
     try:
-        # Conexão com o banco de dados
-        conexao = mysql.connector.connect(
-            host='localhost',
-            database='operacao',
-            user='root',
-            password=''
-        )
+        # Conexão com o banco de dados usando o módulo conexao
+        conexao = create_connection()
 
-        if conexao.is_connected():
+        if conexao is not None and conexao.is_connected():
             cursor = conexao.cursor(dictionary=True)
 
             # Consultar todas as informações do cliente
@@ -65,4 +60,4 @@ def buscar_dados_cliente(cliente_id):
     finally:
         if 'conexao' in locals() and conexao.is_connected():
             cursor.close()
-            conexao.close()
+            close_connection(conexao)  # Fechar a conexão usando a função do módulo conexao

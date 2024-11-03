@@ -1,23 +1,30 @@
+import os
 import mysql.connector
 from mysql.connector import Error
-from dotenv import load_dotenv
-import os
 
-# Carregar variáveis de ambiente do arquivo .env
-load_dotenv()
+def create_connection():
+    """Create a database connection."""
+    db_host = os.getenv('DB_HOST')
+    db_database = os.getenv('DB_DATABASE')
+    db_user = os.getenv('DB_USER')
+    db_password = os.getenv('DB_PASSWORD')
 
-def criar_conexao():
-    """Cria uma conexão com o banco de dados MySQL usando variáveis de ambiente."""
     try:
-        conexao = mysql.connector.connect(
-            host=os.getenv('DB_HOST'),
-            database=os.getenv('DB_DATABASE'),
-            user=os.getenv('DB_USER'),
-            password=os.getenv('DB_PASSWORD')
+        connection = mysql.connector.connect(
+            host=db_host,
+            database=db_database,
+            user=db_user,
+            password=db_password
         )
-        if conexao.is_connected():
-            print("Conexão bem-sucedida ao banco de dados.")
-            return conexao
-    except Error as e:
-        print(f"Erro ao conectar ao banco de dados: {e}")
+        if connection.is_connected():
+            print("Conexão com o banco de dados estabelecida com sucesso!")
+            return connection
+    except Error as err:
+        print(f"Erro ao conectar ao MySQL: {err}")
         return None
+
+def close_connection(connection):
+    """Close the database connection."""
+    if connection and connection.is_connected():
+        connection.close()
+        print("Conexão com o banco de dados encerrada.")
