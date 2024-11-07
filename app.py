@@ -3,14 +3,14 @@ from buscar_dados import buscar_dados_cliente
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
-
-
 
 app = Flask(__name__)
 
+# Configuração do Flask usando DATABASE_URL
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 @app.route('/')
 def index():
@@ -23,7 +23,7 @@ def index():
     if dados:
         return render_template('index.html', dados=dados)  # Passa os dados para o template
     else:
-        return "Cliente não encontrado", 404
+        return "Erro de conexão com o banco de dados!", 404
 
 
 @app.route('/fotos/<int:cliente_id>')
@@ -126,5 +126,6 @@ def exibir_cliente(cliente_id):
         return "Erro ao buscar os dados do cliente", 500
 
 
-if __name__ == '__main__':
-    app.run(debug=True)  # Modo de debug ativado
+if __name__ == "__main__":
+    app.run(debug="True")
+
