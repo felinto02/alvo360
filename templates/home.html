@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}home{% endblock %}
+
+{% block page_title %}
+    Informações do Alvo
+{% endblock %}
+
+{% block content %}
+    <style>
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            flex-grow: 1;
+        }
+        .button {
+            font-size: 18px;
+            background-color: #290082;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        .button i {
+            margin-bottom: 100px;
+            font-size: 40px !important; /* Aumenta o tamanho dos ícones */
+        }
+        .button:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+
+    <div class="buttons">
+        <a href="/fotos" class="button">
+            <i class="fas fa-camera"></i>
+            <span>Fotos</span>
+        </a>
+
+        <!-- Botão Mapa com o link do Google Maps vindo do banco de dados -->
+        <a href="{{ dados['endereco']['link_endereco'] }}" target="_blank" class="button" type="button">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Mapa</span>
+        </a>
+        
+        
+        <a href="/qualificacao" class="button">
+            <i class="fas fa-id-card"></i>
+            <span>Qualificação</span>
+        </a>
+        <a href="/endereco" class="button">
+            <i class="fas fa-map-signs"></i>
+            <span>Endereço</span>
+        </a>
+        <a href="/informacao" class="button">
+            <i class="fas fa-info-circle"></i>
+            <span>Informações</span>
+        </a>
+    </div>
+{% endblock %}

@@ -41,10 +41,11 @@
 
     <!-- Título da página com ícone de home -->
     <div class="title">
-        <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+        {% if not is_home %}
+            <a href="/" class="home-icon"><i class="fas fa-home"></i></a>
+        {% endif %}
         {% block page_title %}Título da Página{% endblock %}
     </div>
-
     <!-- Conteúdo da página -->
     {% block content %}{% endblock %}
 
